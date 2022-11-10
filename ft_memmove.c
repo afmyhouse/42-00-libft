@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 22:50:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/09 23:52:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:47:02 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	char 		*d;
-	const char	*s;
- 
-	d = dest;
-	s = src;
-	if (len != 0 && d != s )
+	char		*p_dest;
+	const char	*p_src;
+	char		*p_dest_end;
+	const char	*p_src_end;
+
+	p_dest = dest;
+	p_src = src;
+	p_dest_end = dest + (len - 1);
+	p_src_end = src + (len - 1);
+	if (len != 0 && p_dest != p_src)
 	{
-		if (d < s)
-    	{
-			while ( len--)
-      		*d++ = *s++;
-		}
-		else if (d > s)
+		if (p_dest < p_src)
 		{
-			char *lastd = d + (len-1);
-			const char *lasts = s + (len-1);
 			while (len--)
-				*lastd-- = *lasts--;
+			*p_dest++ = *p_src++;
+		}
+		else if (p_dest > p_src)
+		{
+			while (len--)
+				*p_dest_end-- = *p_src_end--;
 		}
 	}
-	return dest;
+	return (dest);
 }
 
 /*void *memmove(void *dest, const void *src, size_t len)

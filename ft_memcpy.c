@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:30:36 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/09 23:39:46 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:50:47 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	char		*d;
-	const char	*s;
-	
-	d = dest;
-	s = src;
-	if (len != 0 && d != s)
+	char		*p_dest;
+	const char	*p_src;
+
+	p_dest = dest;
+	p_src = src;
+	if (len != 0 && p_dest != p_src)
 	{
 		while (len--)
-    		*d++ = *s++;		
+			*p_dest++ = *p_src++;
 	}
-	return dest;
+	return (dest);
 }

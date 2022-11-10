@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 00:49:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/10 11:22:53 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/10 10:27:02 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/10 13:01:55 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *str1, const void *str2, size_t count)
+char	*ft_strchr(const char *s, int c)
 {
-	const unsigned char	*p_str1 = (const unsigned char*)str1;
-	const unsigned char	*p_str2 = (const unsigned char*)str2;
+	char	*p_s;
 
-	while (count-- > 0)
+	p_s = (char *)s;
+	while (*p_s)
 	{
-		if (*p_str1++ != *p_str2++)
-			return (p_str1[-1] - p_str2[-1]);
+		if (*p_s == c)
+			return ((char *)p_s);
+		p_s++;
 	}
-	return (0);
+	if (c == '\0')
+		return ((char *)p_s);
+	return (NULL);
 }
