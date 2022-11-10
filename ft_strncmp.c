@@ -6,10 +6,11 @@
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:45:54 by psotto-m          #+#    #+#             */
-/*   Updated: 2022/09/02 09:39:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:43:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 /*#include <stdio.h>
 #include <string.h>
 
@@ -38,7 +39,7 @@ int	main(int argc, char **argv)
 	printf("Diff LIBRARY %d\n", strncmp(s1, s2, n));
 }*/
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (n && *s1 && (*s1 == *s2))
 	{
