@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:23:14 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/08 13:27:41 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/10 00:33:35 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/10 00:44:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* THIS FUNCTION IS NOT READY */
 #include "libft.h"
 
-void	write_char(char c)
+void	*ft_memchr (const void *p_mem, int c, size_t length)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write_char(str[i]);
-		i++;
-	}
+  const unsigned char *src = (const unsigned char *)p_mem;
+  
+  while (length-- > 0)
+  {
+    if (*src == (unsigned char)c)
+     return (void *)src;
+    src++;
+  }
+  return NULL;
 }
