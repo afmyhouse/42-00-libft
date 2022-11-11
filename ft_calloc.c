@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:59:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/10 20:11:58 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/10 21:34:39 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/10 21:46:43 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void *ft_calloc (size_t buff_len, size_t item_size)
 {
-	size_t	l_src;
-	size_t	i;
+	void *ptr;
 
-	i = 0;
-	l_src = ft_strlen(src);
-	if (size == 0)
-		return (l_src);
-	else if (l_src < size)
-	{
-		while (*src)
-		{
-			*dest = *src;
-			src++;
-			dest++;
-		}
+	if (buff_len == 0 || item_size == 0)
+    {
+		buff_len = 1;
+		item_size =1;
 	}
-	else if (size != 0)
-	{
-		while (i < size -1)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-	}
-	dest[i] = '\0';
-	return (l_src);
+	ptr = malloc (buff_len * item_size);
+  	if (ptr)
+		ft_bzero (ptr, buff_len * item_size);
+	return (ptr);
 }
