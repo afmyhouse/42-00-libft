@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 21:34:39 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/13 23:15:03 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/14 00:28:11 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/14 00:55:05 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(size_t buff_len, size_t item_size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void *ptr;
-
-	if (buff_len == 0 || item_size == 0)
-    {
-		buff_len = 1;
-		item_size =1;
-	}
-	ptr = malloc (buff_len * item_size);
-  	if (!ptr)
+	unsigned int len;
+	char *dest;
+	
+	if (!s1 || !s2)
 		return (NULL);
-	else
+	len = ft_strlen(s1)+ft_strlen(s2)+1;
+    dest = (char*)malloc(len);
+	if (!dest)
+		return (NULL);
+	while (*s1)
 	{
-		ft_bzero(ptr, buff_len * item_size);
-		return ((void *)ptr);
+		*dest++ = *s1++;
 	}
+	while (*s2)
+	{
+		*dest++ = *s2++;
+	}
+    *dest = '\0';
+	dest -= (len - 1);
+    return (dest);
 }
