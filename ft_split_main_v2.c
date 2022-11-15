@@ -6,122 +6,75 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/15 10:54:03 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:46:03 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t	ft_strlen(const char *str)
+size_t ft_split_count(const char *s, char c)
 {
-	int	i;
+	size_t	splits;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	char	*p_s;
-
-	p_s = (char *)s;
-	while (*p_s)
-	{
-		if (*p_s == c)
-			return ((char *)p_s);
-		p_s++;
-	}
-	if (c == '\0')
-		return ((char *)p_s);
-	return (NULL);
-}
-
-size_t	ft_split_len(const char *s, int c)
-{
-	size_t split_size = 0;
-
+	splits = 0;
 	while (*s)
 	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-			return (split_size);
-		if (*s != c)
-			split_size++;	
+		if ( *s == c && *(s + 1) != c && *(s + 1) )
+			splits++;
 		s++;
 	}
-	return (split_size);
-}
-
-unsigned char ft_split_count(const char *s, char c)
-{
-	unsigned char i;
-	
-	i = 0;
-	while (*s)
-	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-			i++;
-		s++;
-	}
-	return (i + 1);
+	return (splits + 1);
 }
 
 char *ft_split_slice(const char *s, char c)
 {
-	size_t	len;
-	char 	*res;
-	
-	len = ft_split_len(s,c);
-	res = (char *)malloc(len + 1);
-	if (!res)
+	size_t	split_len;
+	char 	*split;
+
+	split_len = 0;
+	while (s[split_len] && s[split_len] != c)
+		split_len++;
+	split = (char *)malloc(split_len + 1);
+	if (!split)
 		return (NULL);
 	while (*s && *s != c)
-	{
-		*res++ = *s++;
-	}
-	*res = '\0';
-	return (res - len);
+		*split++ = *s++;
+	*split = '\0';
+	return (split - split_len);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char **array;
-	char splits = ft_split_count(s, c);
-	int i = 0;
+	size_t i_split;
+	size_t splits;
 
-	printf ("split : %c\n", splits);
-	
+	i_split = 0;
+	splits = ft_split_count(s, c);
 	array = (char **)malloc(sizeof(char *) * (splits + 1));
 	if (!array)
 		return (NULL);
-	while (*s)
+	while (*s && i_split <= splits)
 	{
-		if (*s == c && *s)
+		while (*s == c && *s)
 			s++;
-		else if (*s && *s != c)
-		{
-			if (i <= splits)
-				array[i] = ft_split_slice(s,c);
-			i++;
-			while (*s && *s != c)
-				s++;
-		}
+		if (*s && *s != c)
+			array[i_split++] = ft_split_slice(s,c);
+		while (*s && *s != c)
+			s++;
 	}
-	array[i] = NULL;
+	array[i_split] = NULL;
 	return (array);
 }
 
 int main(void)
 {
-	char *s = "abXcdfXgvbhXXprsXtv\0";
-	char **res = ft_split(s, );
+	char *s = "12X00\n	123XXXXXXX1234X0X12XX123X12";
+	char **res = ft_split(s, 'X');
 	while (*res)
 	{
-		printf("array %s\n", *res);
+		printf("array = %s\n", *res);
 		res++;
 	}
 	return (0);
