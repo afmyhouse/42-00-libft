@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/15 01:00:55 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/15 10:54:03 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ char	**ft_split(char const *s, char c)
 
 int main(void)
 {
-	char *s = "XXXXabXXXXXXcdfXgvbhXXprsXtvXXXX\0";
-	char **res = ft_split(s, 'X');
+	char *s = "abXcdfXgvbhXXprsXtv\0";
+	char **res = ft_split(s, );
 	while (*res)
 	{
 		printf("array %s\n", *res);
