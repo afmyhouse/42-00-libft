@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
+#    By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 11:20:00 by antoda-s          #+#    #+#              #
-#    Updated: 2022/11/14 17:03:50 by antoda-s         ###   ########.fr        #
+#    Updated: 2022/11/16 15:51:14 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS			=	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 					ft_putnbr_fd.c \
 					ft_striteri.c
 OBJS			= $(SRCS:.c=.o)
-				
+
 BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 					ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 					ft_lstmap.c ft_lstnew.c ft_lstsize.c

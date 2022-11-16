@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/15 23:58:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:53:00 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**ft_split(char const *s, char c)
 	size_t i_split;
 	size_t splits;
 
+	if (!s)
+		return (NULL);
 	i_split = 0;
 	splits = ft_split_count(s, c);
 	array = (char **)malloc(sizeof(char *) * (splits + 1));
