@@ -5,101 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 10:12:25 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/15 00:02:49 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/15 23:58:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-
-int	ft_slice_count(char const *s, char c)
+size_t ft_split_count(const char *s, char c)
 {
-	int	i_s;
-	int	slices;
+	size_t	splits;
 
-	i_s = 0;
-	slices = 0;
-	if (s[i_s] == c)
-		slices--;
-	while (*s == c)
-		s++;
-	while (*s != '\0')
+	splits = 0;
+	while (*s)
 	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-			slices++;			
+		if ( *s == c && *(s + 1) != c && *(s + 1) )
+			splits++;
 		s++;
 	}
-	slices++;
-	return (slices);
+	return (splits + 1);
 }
 
-char	*malloc_strings(const char *s, char c)
+char *ft_split_slice(const char *s, char c)
 {
-	char	*word;
-	int		i;
+	size_t	split_len;
+	char 	*split;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
-	if (!word)
+	split_len = 0;
+	while (s[split_len] && s[split_len] != c)
+		split_len++;
+	split = (char *)malloc(split_len + 1);
+	if (!split)
 		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
+	while (*s && *s != c)
+		*split++ = *s++;
+	*split = '\0';
+	return (split - split_len);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		slices;
-	char	**tab;
-	int		i;
+	char **array;
+	size_t i_split;
+	size_t splits;
 
-	if (!s)
+	i_split = 0;
+	splits = ft_split_count(s, c);
+	array = (char **)malloc(sizeof(char *) * (splits + 1));
+	if (!array)
 		return (NULL);
-	slices = ft_slice_count(s, c);
-	tab = (char **)malloc(sizeof(char *) * (slices + 1));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (*s)
+	while (*s && i_split <= splits)
 	{
-		while (*s && *s == c)
+		while (*s == c && *s)
 			s++;
 		if (*s && *s != c)
-		{
-			tab[i] = malloc_strings(s, c);
-			i++;
-			while (*s && *s != c)
-				s++;
-		}
+			array[i_split++] = ft_split_slice(s,c);
+		while (*s && *s != c)
+			s++;
 	}
-	tab[i] = NULL;
-	return (tab);
-}
-
-int main(void)
-{
-	char *s = "abXcdfXghXXprsXtuv\0";
-	char **res = ft_split(s, 'X');
-	int i = 0;
-	while (*res)
-	{
-		printf("array %s\n", *res);
-		res++;
-	}
-	res = ft_split(s, 'X');
-	while( res[i]!= NULL ) {
-      printf( " %s\n", res[i] ); //printing each res
-//      res = ft_split(NULL, ' ');
-	  i++;
-   }
-	return (0);
+	array[i_split] = NULL;
+	return (array);
 }
