@@ -6,30 +6,30 @@
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:36:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/16 09:53:00 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:46:37 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_split_count(const char *s, char c)
+size_t	ft_split_count(const char *s, char c)
 {
 	size_t	splits;
 
 	splits = 0;
 	while (*s)
 	{
-		if ( *s == c && *(s + 1) != c && *(s + 1) )
+		if (*s == c && *(s + 1) != c && *(s + 1))
 			splits++;
 		s++;
 	}
 	return (splits + 1);
 }
 
-char *ft_split_slice(const char *s, char c)
+char	*ft_split_slice(const char *s, char c)
 {
 	size_t	split_len;
-	char 	*split;
+	char	*split;
 
 	split_len = 0;
 	while (s[split_len] && s[split_len] != c)
@@ -45,9 +45,9 @@ char *ft_split_slice(const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char **array;
-	size_t i_split;
-	size_t splits;
+	char	**array;
+	size_t	i_split;
+	size_t	splits;
 
 	if (!s)
 		return (NULL);
@@ -61,7 +61,7 @@ char	**ft_split(char const *s, char c)
 		while (*s == c && *s)
 			s++;
 		if (*s && *s != c)
-			array[i_split++] = ft_split_slice(s,c);
+			array[i_split++] = ft_split_slice(s, c);
 		while (*s && *s != c)
 			s++;
 	}

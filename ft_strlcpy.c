@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:59:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/10 20:11:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:44:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	else if (l_src < size)
 	{
 		while (*src)
-		{
-			*dest = *src;
-			src++;
-			dest++;
-		}
+			*dest++ = *src++;
 	}
 	else if (size != 0)
 	{

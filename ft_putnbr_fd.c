@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 23:24:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 13:59:07 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/17 14:53:08 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/17 15:05:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *src, unsigned int start, size_t len)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	size_t	i;
-	char	*dest;
+	long int	temp_n;
 
-	i = len + start;
-	dest = (char *)malloc(len + 1);
-	if (!dest || !src)
-		return (NULL);
-	if (ft_strlen(src) <= (size_t)start)
+	temp_n = nb;
+	if (temp_n < 0)
 	{
-		*dest = '\0';
-		return (dest);
+		write(fd, "-", 1);
+		temp_n = temp_n * -1;
 	}
-	src += start;
-	while ((start++ < i) && *src != '\0')
-		*dest++ = *src++;
-	*dest = '\0';
-	return (dest - len);
+	if (temp_n > 9)
+	{
+		ft_putnbr_fd(temp_n / 10, fd);
+		ft_putnbr_fd(temp_n % 10, fd);
+	}
+	else
+	{
+		temp_n = temp_n + '0';
+		write(fd, &temp_n, 1);
+	}
 }

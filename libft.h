@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2022/11/10 21:43:13 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:13:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 int				ft_atoi(const char *str);
 void			*ft_bzero(void *s, size_t len);
-void			*ft_calloc (size_t buff_len, size_t item_size);
+void			*ft_calloc(size_t buff_len, size_t item_size);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
@@ -37,7 +37,7 @@ void			*ft_memchr(const void *p_mem, int c, size_t length);
 int				ft_memcmp(const void *str1, const void *str2, size_t count);
 void			*ft_memcpy(void *dest, const void *src, size_t len);
 void			*ft_memmove(void *dest, const void *src, size_t len);
-void			*ft_memset(void *s, int c, size_t len);
+void			*ft_memset(void *s, int c, size_t n);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
