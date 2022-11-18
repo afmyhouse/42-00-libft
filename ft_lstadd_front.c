@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 22:37:50 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/18 21:49:13 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/18 18:41:34 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/18 19:15:04 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i++]);
-	return (i-1);
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }
