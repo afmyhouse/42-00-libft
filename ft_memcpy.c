@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:30:36 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/10 10:50:47 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/19 10:56:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	char		*p_dest;
-	const char	*p_src;
+	unsigned char	*p_dest;
+	unsigned char	*p_src;
 
 	p_dest = dest;
-	p_src = src;
+	p_src = (unsigned char *)src;
 	if (len != 0 && p_dest != p_src)
 	{
 		while (len--)

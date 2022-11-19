@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
+#    By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 11:20:00 by antoda-s          #+#    #+#              #
-#    Updated: 2022/11/18 21:28:19 by antoda-s         ###   ########.fr        #
+#    Updated: 2022/11/19 10:50:44 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ SRCS			=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 					ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 OBJS			= $(SRCS:.c=.o)
 
-BONUS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+BONUS_SRCS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 					ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
-					ft_lstiter.c ft_lstmap.c 
-BONUS_OBJS		= $(BONUS:.c=.o)
+					ft_lstiter.c ft_lstmap.c
+BONUS_OBJS		= $(BONUS_SRCS:.c=.o)
 
 CC				= cc
 RM				= rm -f
@@ -54,5 +54,5 @@ bonus:			$(OBJS) $(BONUS_OBJS)
 .PHONY:			all clean fclean re bonus
 
 so:
-				$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-				gcc -nostartfiles -shared -o libft.so $(OBJS)
+				$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
+				gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)

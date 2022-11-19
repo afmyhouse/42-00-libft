@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2022/11/18 20:11:19 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/19 11:52:57 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct		s_list
+/**********************
+	BONUS TYPEDEF
+**********************/
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -72,7 +75,7 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
+				void (*del)(void *));
 
 #endif

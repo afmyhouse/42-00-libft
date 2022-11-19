@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr1.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:30:36 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/10 11:02:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/19 11:39:27 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memchr(const void *p_mem, int c, size_t length)
 {
-	const unsigned char	*src;
+	unsigned char	*src;
 
-	src = (const unsigned char *)p_mem;
-	while (length-- > 0)
+	src = (unsigned char *)p_mem;
+	while (length--)
 	{
 		if (*src == (unsigned char)c)
 			return ((void *)src);

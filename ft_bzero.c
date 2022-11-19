@@ -6,14 +6,14 @@
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:12:42 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/08 16:49:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/19 11:47:50 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t len)
+void	*ft_bzero(void *s, size_t length)
 {
-	ft_memset(s, 0, len);
+	ft_memset(s, 0, length);
 	return (0);
 }
