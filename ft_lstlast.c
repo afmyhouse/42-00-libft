@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 19:27:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/19 10:26:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:34:05 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_list	*ft_lstlast(t_list *lst)
 		return (NULL);
 	while (lst)
 	{
-		if (lst->next == NULL)
+		if ((*lst).next == NULL)
 			return (lst);
-		lst = lst->next;
+		lst = (*lst).next;
 	}
 	return (lst);
 }

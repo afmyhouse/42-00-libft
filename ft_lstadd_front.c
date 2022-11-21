@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:41:34 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/18 19:15:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:37:07 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst && new)
 	{
-		new->next = *lst;
+		(*new).next = *lst;
 		*lst = new;
 	}
 }

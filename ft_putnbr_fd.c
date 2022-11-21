@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:53:08 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 15:05:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/21 01:08:38 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	ft_putnbr_fd(int nb, int fd)
 {
-	long int	temp_n;
+	long int	ln;
 
-	temp_n = nb;
-	if (temp_n < 0)
+	ln = nb;
+	if (ln < 0)
 	{
 		write(fd, "-", 1);
-		temp_n = temp_n * -1;
+		ln = ln * -1;
 	}
-	if (temp_n > 9)
+	if (ln > 9)
 	{
-		ft_putnbr_fd(temp_n / 10, fd);
-		ft_putnbr_fd(temp_n % 10, fd);
+		ft_putnbr_fd(ln / 10, fd);
+		ft_putnbr_fd(ln % 10, fd);
 	}
 	else
 	{
-		temp_n = temp_n + '0';
-		write(fd, &temp_n, 1);
+		ln = ln + '0';
+		write(fd, &ln, 1);
 	}
 }

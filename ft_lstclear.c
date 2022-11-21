@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 19:41:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/19 10:26:54 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:49:50 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*t;
-	t_list	*tmp;
+	t_list	*lstclear;
+	t_list	*lstnext;
 
 	if (!lst)
 		return ;
-	t = *lst;
-	while (t)
+	lstclear = *lst;
+	while (lstclear)
 	{
-		tmp = t->next;
-		ft_lstdelone(t, del);
-		t = tmp;
+		lstnext = (*lstclear).next;
+		ft_lstdelone(lstclear, del);
+		lstclear = lstnext;
 	}
 	*lst = NULL;
 }
