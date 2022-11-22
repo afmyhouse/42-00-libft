@@ -6,27 +6,27 @@
 /*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:34:39 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 12:39:35 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:43:31 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t buff_len, size_t item_size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
-	if (buff_len == 0 || item_size == 0)
+	if (nmemb == 0 || size == 0)
 	{
-		buff_len = 1;
-		item_size = 1;
+		nmemb = 1;
+		size = 1;
 	}
-	ptr = malloc (buff_len * item_size);
+	ptr = malloc (nmemb * size);
 	if (!ptr)
 		return (NULL);
 	else
 	{
-		ft_bzero(ptr, buff_len * item_size);
+		ft_bzero(ptr, nmemb * size);
 		return ((void *)ptr);
 	}
 }

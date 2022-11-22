@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:54:38 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/21 23:09:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:42:41 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,18 @@ int	ft_issign(char c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	signal;
-	int	index;
 	int	number;
 
-	index = 0;
 	signal = 1;
 	number = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (ft_issign(*str))
-		signal *= ft_issign(*str++);
-	while (ft_isdigit(*str))
-		number = number * 10 + (*str++ - '0');
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (ft_issign(*nptr))
+		signal *= ft_issign(*nptr++);
+	while (ft_isdigit(*nptr))
+		number = number * 10 + (*nptr++ - '0');
 	return (number * signal);
 }
