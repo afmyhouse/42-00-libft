@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoda-s <antoda-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:28:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/17 13:48:24 by antoda-s         ###   ########.fr       */
+/*   Updated: 2022/11/29 01:06:36 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	len = ft_strlen(s1)+ft_strlen(s2)+1;
-	dest = (char *)malloc(len);
+	dest = ft_calloc(len, sizeof(char));
 	if (!dest)
 		return (NULL);
 	while (*s1)

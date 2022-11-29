@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd_main.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 10:27:02 by antoda-s          #+#    #+#             */
-/*   Updated: 2022/11/27 18:52:04 by antoda-s         ###   ########.fr       */
+/*   Created: 2022/11/17 14:53:08 by antoda-s          #+#    #+#             */
+/*   Updated: 2022/11/21 01:18:08 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <strings.h>
+#include <unistd.h>
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	unsigned char	*p_s;
+	long int	ln;
 
-	p_s = (unsigned char *)s;
-	while (*p_s && *p_s != (unsigned char)c)
-		p_s++;
-	if (c == '\0' || *p_s == (unsigned char)c)
-		return ((char *)p_s);
-	return (NULL);
+	ln = nb;
+	if (ln < 0)
+	{
+		write(fd, "-", 1);
+		ln = ln * -1;
+	}
+	if (ln > 9)
+	{
+		ft_putnbr_fd(ln / 10, fd);
+		ft_putnbr_fd(ln % 10, fd);
+	}
+	else
+	{
+		ln = ln + '0';
+		write(fd, &ln, 1);
+	}
+}
+
+int main(void)
+{
+	int nbr;
+
+	nbr = 2345678;
+	ft_putnbr_fd(nbr, 1);
+	return (0);
 }
